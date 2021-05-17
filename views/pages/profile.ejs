@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= name%>'s Profile</title>
+        <%- include('../partials/head') %> 
+    </head>
+    <body class="container">
+        <header>
+            <%- include('../partials/header') %> 
+        </header>
+        <main>
+            <div class="jumbotron">
+                <h1>Welcome <%= name %></h1>
+                <ul>
+                    <% subjects.forEach(function(subjects) { %>
+                      <li>
+                        <strong><%= subjects %></strong>
+                      </li>
+                    <% }); %>
+                  </ul>
+                <a href="/subjects"><button class="btn btn-primary" type="button">Subject Selection</button></a>
+                <br>
+                <br>
+                <div class="popup">
+                    <button type="button" class="btn btn-primary" onclick="popup()">Change your name</button>
+                    <span class="popuptext" id="myPopup">
+                        <form action='/namechange' method="POST">
+                            <label for="name">New Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </span>
+                </div>
+                <br>
+                <br>
+                <br>
+                <form action="/logout?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-primary">Log Out</button>
+                </form>
+                <style>
+                    .popup {
+                        position: relative;
+                        display: inline-block;
+                        cursor: pointer;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        user-select: none;
+                        }
+
+                        /* The actual popup */
+                        .popup .popuptext {
+                        visibility: hidden;
+                        width: 1000px;
+                        background-color: #e9ecef;
+                        color: #000;
+                        text-align: center;
+                        border-radius: 6px;
+                        border-color: #000;
+                        padding: 8px 0;
+                        position: absolute;
+                        z-index: 1;
+                        bottom: 125%;
+                        left: 50%;
+                        margin-left: -80px;
+                        }
+
+                        /* Popup arrow */
+                        .popup .popuptext::after {
+                        content: "";
+                        position: absolute;
+                        top: 100%;
+                        left: 50%;
+                        margin-left: -5px;
+                        border-width: 5px;
+                        border-style: solid;
+                        border-color: black transparent transparent transparent;
+                        }
+
+                        /* Toggle this class - hide and show the popup */
+                        .popup .show {
+                        visibility: visible;
+                        -webkit-animation: fadeIn 1s;
+                        animation: fadeIn 1s;
+                        }
+
+                        /* Add animation (fade in the popup) */
+                        @-webkit-keyframes fadeIn {
+                        from {opacity: 0;} 
+                        to {opacity: 1;}
+                        }
+
+                        @keyframes fadeIn {
+                        from {opacity: 0;}
+                        to {opacity:1 ;}
+                        }
+                </style>
+
+                <script>
+                    function popup() {
+                        var popup = document.getElementById('myPopup');
+                        popup.classList.toggle('show');
+                    }
+                </script>
+            </div>
+        </main>
+        <footer>
+            <%- include('../partials/footer') %> 
+        </footer>
+    </body>
+</html>

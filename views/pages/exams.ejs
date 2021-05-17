@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../partials/head') %> 
+    </head>
+    <body class="container">
+        <header>
+            <%- include('../partials/header') %> 
+        </header>
+        <main>
+            <div class="jumbotron">
+                <h1>Upcoming Exams</h1>
+                <ul>
+                    <% subjects.forEach(function(subjects) { %>
+                        <li>
+                            <strong><%= subjects %></strong>
+                        </li>
+                    <% }); %>
+                </ul>
+            </div>
+        </main>
+        <footer>
+            <%- include('../partials/footer') %> 
+        </footer>
+    </body>
+</html>
