@@ -51,8 +51,6 @@ const exams = [
   { subject: "Visual Arts", Date: "28/05/21" },
 ];
 
-console.log(exams[5].subject);
-
 app.set("view-engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 app.use(flash());
@@ -103,7 +101,6 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
   } catch {
     res.redirect("/register");
   }
-  console.log(users);
 });
 
 app.get("/profile", checkAuthenticated, (req, res) => {
@@ -331,7 +328,6 @@ app.post("/subject", checkAuthenticated, (req, res) => {
       users[userindex].subjects.splice(i, 1);
     }
   }
-  console.log(users[userindex].subjects);
   let subjects = [];
   for (i = 0; i < users[userindex].subjects.length; i++) {
     subjects.push(users[userindex].subjects[i]);

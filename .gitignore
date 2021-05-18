@@ -1,3 +1,5 @@
 .env
 node_modules
 calendar.html
+pages/calendar.css
+pages/calendar.js
